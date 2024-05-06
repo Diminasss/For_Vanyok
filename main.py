@@ -1,16 +1,19 @@
-# This is a sample Python script.
+from telebot import TeleBot
+from time import sleep
+from config import Telegram_API
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+bot: TeleBot = TeleBot(Telegram_API)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+if __name__ == "__main__":
+    while True:
+        try:
+            bot.polling(none_stop=True)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        except KeyboardInterrupt as e:
+            print("Ручной выход")
+            exit(0)
+
+        except Exception as e:
+            print(f"Ошибка {e}")
+            sleep(5)
