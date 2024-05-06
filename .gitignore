@@ -75,7 +75,7 @@ __pypackages__/
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
-.venv
+.venv/
 pip-selfcheck.json
 *.manifest
 *.spec
@@ -112,3 +112,11 @@ dmypy.json
 .pyre/
 .pytype/
 cython_debug/
+/.idea/.name
+/.idea/.gitignore
+/.idea/ForVanyok.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
