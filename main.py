@@ -72,18 +72,18 @@ def menu(message: Message) -> None:
                      reply_markup=markup_pages[users_and_pages[message.chat.id]])
 
 
-def fuse(chat_id: int):
+def fuse(chat_id: int) -> None:
     if chat_id not in users_and_pages:
         users_and_pages[chat_id] = 0
 
 
 @bot.callback_query_handler(func=lambda call: True)
-def answer_question(call: CallbackQuery):
+def answer_question(call: CallbackQuery) -> None:
     print(call.data)
     if call.data.isdigit():
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                              text=answers[int(call.data)], reply_markup=InlineKeyboardMarkup().add(
-                InlineKeyboardButton(text="Назад", callback_data="back")))
+                              text=answers[int(call.data)],
+                              reply_markup=InlineKeyboardMarkup().add(InlineKeyboardButton(text="Назад", callback_data="back")))
     elif call.data == "back":
         fuse(call.message.chat.id)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
@@ -109,6 +109,7 @@ def answer_question(call: CallbackQuery):
 if __name__ == "__main__":
     if len(questions) != len(answers):
         print("Внимание, программа не может работать, так как количество вопросов отличается от количества ответов.")
+        exit(228)
     while True:
         try:
             bot.polling(none_stop=True)
